@@ -79,15 +79,17 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden bg-navy-light border-b border-gold/10 overflow-hidden"
           >
-            <ul className="flex flex-col px-6 py-4 divide-y divide-white/5">
+            <ul className="flex flex-col px-4 py-3 gap-1">
               {links.map((link) => (
                 <li key={link.path}>
                   <NavLink
                     to={link.path}
                     onClick={() => setIsOpen(false)}
                     className={({ isActive }) =>
-                      `block py-3 text-sm font-medium transition-colors ${
-                        isActive ? 'text-gold' : 'text-white/85 hover:text-white'
+                      `block py-3.5 px-4 text-sm font-medium rounded-[2px] transition-all ${
+                        isActive
+                          ? 'text-gold bg-white/5 font-semibold'
+                          : 'text-white/85 hover:text-white hover:bg-white/5 active:bg-white/10'
                       }`
                     }
                   >
@@ -100,8 +102,10 @@ const Navbar: React.FC = () => {
                   to="/contact"
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
-                    `block py-3 text-sm font-semibold transition-colors ${
-                      isActive ? 'text-gold' : 'text-white/85 hover:text-white'
+                    `block py-3.5 px-4 text-sm font-semibold rounded-[2px] transition-all ${
+                      isActive
+                        ? 'text-gold bg-white/5'
+                        : 'text-white/85 hover:text-white hover:bg-white/5 active:bg-white/10'
                     }`
                   }
                 >

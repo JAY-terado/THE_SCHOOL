@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* ── CONTACT MAIN ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-start">
           
           {/* Info Column */}
@@ -334,7 +334,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* ── QUICK LINKS GRID ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Looking for something specific?</span>

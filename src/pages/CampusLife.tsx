@@ -120,8 +120,8 @@ const CampusLife: React.FC = () => {
         </div>
       </section>
 
-      {/* ── CLUBS GRID ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      {/* ── CO-CURRICULAR CLUBS ── */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Beyond the Classroom</span>
@@ -135,7 +135,7 @@ const CampusLife: React.FC = () => {
 
           <h3 className="font-serif-display text-xl font-bold text-navy mb-8">Student Clubs &amp; Programmes</h3>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {clubs.map((club, idx) => (
               <motion.div
                 key={idx}
@@ -153,8 +153,8 @@ const CampusLife: React.FC = () => {
         </div>
       </section>
 
-      {/* ── EVENTS CALENDAR ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40" id="events">
+      {/* ── DAILY ROUTINE ── */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40" id="events">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Annual Events Calendar</span>
@@ -163,7 +163,7 @@ const CampusLife: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {events.map((evt, idx) => (
               <motion.div
                 key={idx}
@@ -179,7 +179,7 @@ const CampusLife: React.FC = () => {
       </section>
 
       {/* ── STUDENT LEADERSHIP ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
           <motion.div {...fadeInUp} className="space-y-6">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Student Leadership</span>

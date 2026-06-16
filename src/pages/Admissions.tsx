@@ -137,7 +137,7 @@ const Admissions: React.FC = () => {
       </section>
 
       {/* ── WHY CHOOSE SOE ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Parents Choose SOE</span>
@@ -146,12 +146,12 @@ const Admissions: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {choicePillars.map((pillar, idx) => (
               <motion.div
                 key={idx}
                 {...fadeInUp}
-                className="bg-cream/35 border border-bordercream/60 p-8 rounded-[2px] hover:border-gold hover:-translate-y-0.5 transition-all duration-200"
+                className="bg-cream/35 border border-bordercream/60 p-6 sm:p-8 rounded-[2px] hover:border-gold hover:-translate-y-0.5 transition-all duration-200"
               >
                 <div className="mb-4">{pillar.icon}</div>
                 <h3 className="font-serif-display text-base font-bold text-navy mb-2">{pillar.title}</h3>
@@ -248,7 +248,7 @@ const Admissions: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div {...fadeInUp} className="md:col-span-7 bg-cream p-8 md:p-10 border border-bordercream rounded-[2px] shadow-sm">
+          <motion.div {...fadeInUp} className="md:col-span-7 bg-cream p-5 sm:p-8 md:p-10 border border-bordercream rounded-[2px] shadow-sm">
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form
@@ -429,16 +429,15 @@ const Admissions: React.FC = () => {
       </section>
 
       {/* ── DOCUMENTS REQUIRED ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Documents Required</span>
-            <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">
-              What to bring for enrolment
-            </h2>
+            <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">What you need to bring</h2>
+            <p className="text-muted text-xs leading-relaxed">Please ensure you have self-attested copies of the following documents ready at the time of verification.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <motion.div {...fadeInUp} className="bg-white p-6 border-t-[3px] border-teal rounded-[2px] shadow-sm">
               <h3 className="font-serif-display text-base font-bold text-navy mb-4 flex items-center gap-2">
                 <FileText size={18} className="text-teal" /> For All Students

@@ -49,7 +49,7 @@ const About: React.FC = () => {
           <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
             Who We Are
           </span>
-          <h1 className="font-serif-display text-4xl md:text-6xl font-bold leading-tight">
+          <h1 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
             Building more than students —<br />
             <span className="italic text-gold-light font-normal">building humans</span>
           </h1>
@@ -60,8 +60,8 @@ const About: React.FC = () => {
       </section>
 
       {/* ── OUR STORY ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <motion.div {...fadeInUp} className="space-y-6">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
               Our Story
@@ -94,7 +94,7 @@ const About: React.FC = () => {
       </section>
 
       {/* ── MESSAGES ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Leadership Messages</span>
@@ -139,7 +139,7 @@ const About: React.FC = () => {
       </section>
 
       {/* ── FOUNDATION: MISSION, VISION & VALUES ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Our Foundation</span>
@@ -149,7 +149,7 @@ const About: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
             <motion.div {...fadeInUp} className="bg-navy text-white p-8 rounded-[2px] border-b-[4px] border-gold shadow-sm">
               <span className="text-[10px] uppercase tracking-widest text-gold font-bold block mb-4">Our Mission</span>
               <p className="font-serif-display italic text-base md:text-[18px] text-white/90 leading-relaxed">
@@ -189,7 +189,7 @@ const About: React.FC = () => {
       </section>
 
       {/* ── EDUCATIONAL PHILOSOPHY ── */}
-      <section className="py-24 px-4 md:px-8 bg-navy text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-glow-radial opacity-15 pointer-events-none" />
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
@@ -202,7 +202,7 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {philosophy.map((item, idx) => (
               <motion.div
                 key={idx}

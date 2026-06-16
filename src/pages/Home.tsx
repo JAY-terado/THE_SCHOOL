@@ -169,7 +169,7 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-serif-display text-4xl md:text-7xl font-bold leading-tight tracking-tight mb-6"
+            className="font-serif-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6"
           >
             Where Potential<br />
             <span className="italic text-gold-light font-normal">Becomes</span> Excellence
@@ -237,8 +237,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── PHILOSOPHY ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           <motion.div {...fadeInUp} className="space-y-6">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
               Our Philosophy
@@ -269,7 +269,7 @@ const Home: React.FC = () => {
               </cite>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-cream p-5 border-t-2 border-teal rounded-[2px]">
                 <strong className="text-[10px] uppercase tracking-wider text-teal block mb-2 font-bold">Mission</strong>
                 <p className="text-muted text-[12px] leading-relaxed">Nurturing confident, compassionate, future-ready learners through experiential education and strong values.</p>
@@ -284,7 +284,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── PILLARS ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Families Choose Us</span>
@@ -299,13 +299,13 @@ const Home: React.FC = () => {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true, margin: '-50px' }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {pillars.map((pillar, idx) => (
               <motion.div
                 key={idx}
                 variants={fadeInUp}
-                className="bg-offwhite border border-bordercream p-8 rounded-[2px] hover:border-gold hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="bg-offwhite border border-bordercream p-6 sm:p-8 rounded-[2px] hover:border-gold hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <div className="mb-4">{pillar.icon}</div>
                 <h3 className="font-serif-display text-lg font-bold text-navy mb-3">{pillar.title}</h3>
@@ -317,7 +317,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── PROGRAMMES OVERVIEW ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">From First Steps to Final Year</span>
@@ -357,7 +357,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── APPROACH ── */}
-      <section className="py-24 px-4 md:px-8 bg-navy text-white relative overflow-hidden">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-navy text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-glow-radial opacity-20 pointer-events-none" />
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
@@ -367,7 +367,7 @@ const Home: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {framework.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -384,7 +384,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── FACILITIES GLIMPSE ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Campus &amp; Facilities</span>
@@ -416,7 +416,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Parent Voices</span>
@@ -426,12 +426,12 @@ const Home: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testi, idx) => (
               <motion.div
                 key={idx}
                 {...fadeInUp}
-                className="bg-offwhite p-8 border border-bordercream rounded-[2px] shadow-sm flex flex-col justify-between"
+                className="bg-offwhite p-6 sm:p-8 border border-bordercream rounded-[2px] shadow-sm flex flex-col justify-between"
               >
                 <p className="text-muted italic text-[13px] leading-relaxed mb-6">
                   {testi.quote}

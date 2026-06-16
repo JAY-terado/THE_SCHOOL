@@ -425,7 +425,7 @@ const Academics: React.FC = () => {
       </section>
 
       {/* ── ROADMAP SECTION ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40" id="roadmap">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40" id="roadmap">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 space-y-4">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Grade-by-Grade Roadmap</span>
@@ -436,12 +436,12 @@ const Academics: React.FC = () => {
           </div>
 
           {/* Stage Selector buttons */}
-          <div className="flex gap-2.5 flex-wrap mb-8 border-b border-bordercream pb-6">
+          <div className="flex gap-2.5 overflow-x-auto scrollbar-none whitespace-nowrap mb-8 border-b border-bordercream pb-6">
             {stages.map((stage) => (
               <button
                 key={stage.id}
                 onClick={() => handleStageChange(stage.id as any)}
-                className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 ${
+                className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 shrink-0 ${
                   activeStage === stage.id
                     ? 'bg-navy text-white shadow-sm'
                     : 'bg-white text-navy border border-bordercream/80 hover:bg-cream-light'
@@ -453,12 +453,12 @@ const Academics: React.FC = () => {
           </div>
 
           {/* Grade Selector Tabs */}
-          <div className="flex gap-0 flex-wrap border-b-2 border-bordercream mb-10">
+          <div className="flex gap-1 overflow-x-auto scrollbar-none whitespace-nowrap border-b-2 border-bordercream mb-10">
             {gradeTabs[activeStage].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveGrade(tab.id)}
-                className={`px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-200 border-b-2 -mb-[2px] ${
+                className={`px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-200 border-b-2 -mb-[2px] shrink-0 ${
                   activeGrade === tab.id
                     ? 'border-gold text-navy font-extrabold'
                     : 'border-transparent text-muted hover:text-navy'
@@ -470,7 +470,7 @@ const Academics: React.FC = () => {
           </div>
 
           {/* Dynamic Content Panel */}
-          <div className="bg-white p-8 md:p-10 border border-bordercream/60 rounded-[2px] shadow-sm min-h-[400px]">
+          <div className="bg-white p-5 sm:p-8 md:p-10 border border-bordercream/60 rounded-[2px] shadow-sm min-h-[400px]">
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 border-b border-bordercream pb-6 mb-8">
               <div>
                 <h3 className="font-serif-display text-2xl md:text-3.5xl font-bold text-navy leading-none mb-2">
@@ -488,7 +488,7 @@ const Academics: React.FC = () => {
               <h4 className="font-serif-display text-lg font-bold text-navy mb-4 flex items-center gap-2">
                 <Brain size={18} className="text-teal" /> Core Curriculum Areas
               </h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {selectedData.subjects.map((sub, idx) => (
                   <div key={idx} className="bg-cream/40 p-5 border-l-3 border-teal rounded-[2px]">
                     <strong className="block text-navy text-xs font-bold mb-1.5 uppercase tracking-wide">
@@ -544,7 +544,7 @@ const Academics: React.FC = () => {
       </section>
 
       {/* ── BEYOND CORE (CO-CURRICULARS) ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Beyond the Core</span>
@@ -553,7 +553,7 @@ const Academics: React.FC = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {enrichment.map((en, idx) => (
               <div
                 key={idx}

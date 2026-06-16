@@ -185,15 +185,15 @@ const Facilities: React.FC = () => {
       </section>
 
       {/* ── INTERACTIVE FACILITY SHOWCASE ── */}
-      <section className="py-24 px-4 md:px-8 bg-offwhite">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           {/* Tab buttons */}
-          <div className="flex gap-2.5 flex-wrap justify-center mb-12 border-b border-bordercream pb-6">
+          <div className="flex gap-2.5 overflow-x-auto scrollbar-none justify-start sm:justify-center mb-12 border-b border-bordercream pb-6 whitespace-nowrap">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 ${
+                className={`px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 shrink-0 ${
                   activeTab === tab.id
                     ? 'bg-navy text-white shadow-sm'
                     : 'bg-white text-navy border border-bordercream/80 hover:bg-cream-light'
@@ -222,12 +222,12 @@ const Facilities: React.FC = () => {
             </motion.div>
 
             {/* Grid of detail cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {activeCategory.items.map((item, idx) => (
                 <motion.div
                   key={idx}
                   {...fadeInUp}
-                  className="bg-white border border-bordercream/60 p-8 rounded-[2px] shadow-sm hover:border-gold hover:-translate-y-0.5 transition-all duration-250 flex flex-col justify-between"
+                  className="bg-white border border-bordercream/60 p-6 sm:p-8 rounded-[2px] shadow-sm hover:border-gold hover:-translate-y-0.5 transition-all duration-250 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
                     <span className="text-4xl block">{item.icon}</span>
@@ -261,7 +261,7 @@ const Facilities: React.FC = () => {
       </section>
 
       {/* ── SAFETY & HYGIENE STANDARDS ── */}
-      <section className="py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Safe &amp; Secure Campus</span>
