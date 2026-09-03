@@ -27,13 +27,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-12">
           {/* Brand Column */}
           <div className="md:col-span-5">
-            <Link to="/" className="flex items-center gap-3 mb-4 group">
-              <span className="w-10 h-10 bg-gold text-navy font-serif font-bold text-lg flex items-center justify-center tracking-wider transition-transform duration-300 group-hover:scale-105">
-                SOE
-              </span>
-              <span className="font-serif text-lg font-semibold text-white tracking-wide">
-                The School of Excellence
-              </span>
+            <Link to="/" className="inline-block mb-6 group" aria-label="The School of Excellence Home">
+              <img
+                src="/Artboard%204100.png"
+                alt="The School of Excellence"
+                className="h-20 sm:h-24 md:h-28 lg:h-32 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-[0_4px_12px_rgba(201,168,76,0.2)]"
+              />
             </Link>
             <p className="text-white/60 text-sm mb-6 max-w-sm leading-relaxed">
               Nurturing character, academic brilliance, and creative minds from Playgroup to Grade 12. Providing a holistic platform where every child's potential becomes excellence.

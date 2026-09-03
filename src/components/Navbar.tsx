@@ -22,15 +22,14 @@ const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-navy border-b border-gold/20 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-[68px]">
+        <div className="flex items-center justify-between h-[76px] md:h-[84px]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <span className="w-10 h-10 bg-gold text-navy font-serif font-bold text-lg flex items-center justify-center tracking-wider transition-transform duration-300 group-hover:scale-105">
-              SOE
-            </span>
-            <span className="font-serif text-[17px] font-semibold text-white tracking-wide transition-colors group-hover:text-gold-light">
-              The School of Excellence
-            </span>
+          <Link to="/" className="flex items-center group py-2" aria-label="The School of Excellence Home">
+            <img
+              src="/Artboard%204100.png"
+              alt="The School of Excellence"
+              className="h-12 sm:h-14 md:h-[58px] lg:h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105 drop-shadow-[0_2px_8px_rgba(201,168,76,0.15)]"
+            />
           </Link>
 
           {/* Desktop Nav Links */}
