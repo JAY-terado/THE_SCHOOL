@@ -12,7 +12,7 @@ const Admissions: React.FC = () => {
     childName: '',
     childDob: '',
     grade: '',
-    year: '2025–26',
+    year: '2027–28',
     source: '',
     message: '',
   });
@@ -39,7 +39,7 @@ const Admissions: React.FC = () => {
       childName: '',
       childDob: '',
       grade: '',
-      year: '2025–26',
+      year: '2027–28',
       source: '',
       message: '',
     });
@@ -121,7 +121,7 @@ const Admissions: React.FC = () => {
         <div className="absolute inset-0 bg-glow-radial opacity-30 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 space-y-4">
           <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
-            Admissions Open 2025–26
+            Admissions Open 2027–28
           </span>
           <h1 className="font-serif-display text-4xl md:text-6xl font-bold leading-tight">
             Begin your child's<br />
@@ -239,7 +239,7 @@ const Admissions: React.FC = () => {
               <div className="bg-cream p-5 border-l-3 border-gold rounded-[2px]">
                 <h4 className="text-[10px] uppercase tracking-wider text-gold font-bold mb-1">Prospectus</h4>
                 <a href="#" className="text-teal font-bold text-xs inline-flex items-center gap-1.5 hover:underline">
-                  Download 2025–26 Brochure <ArrowRight size={12} />
+                  Download 2027–28 Brochure <ArrowRight size={12} />
                 </a>
               </div>
             </div>
@@ -353,8 +353,8 @@ const Admissions: React.FC = () => {
                         onChange={handleInputChange}
                         className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
                       >
-                        <option>2025–26</option>
-                        <option>2026–27</option>
+                        <option>2027–28</option>
+                        <option>2028–29</option>
                       </select>
                     </div>
                   </div>
@@ -516,7 +516,7 @@ const Admissions: React.FC = () => {
       <section className="py-16 px-4 md:px-8 bg-gradient-to-r from-gold to-gold-light text-navy relative overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-xl text-center md:text-left space-y-3">
-            <h2 className="font-serif-display text-3xl font-bold leading-tight">Seats are limited for 2025–26</h2>
+            <h2 className="font-serif-display text-3xl font-bold leading-tight">Seats are limited for 2027–28</h2>
             <p className="text-sm text-navy/80 leading-relaxed font-medium">
               Don't wait — enquire today and reserve your child's place in our learning community.
             </p>

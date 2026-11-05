@@ -135,7 +135,7 @@ const Careers: React.FC = () => {
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Current Opportunities</span>
             <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">
-              Open Positions for Academic Year 2025–26
+              Open Positions for Academic Year 2027–28
             </h2>
           </div>
 

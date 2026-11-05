@@ -131,6 +131,42 @@ const About: React.FC = () => {
         </div>
       </section>
 
+      {/* ── OUR MISSION ── */}
+      <section className="py-20 md:py-28 px-4 md:px-8 bg-navy text-white relative overflow-hidden border-t border-b border-gold/20">
+        <div className="absolute inset-0 bg-glow-radial opacity-35 pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-teal/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <motion.div {...fadeInUp} className="space-y-6">
+            <span className="inline-block bg-gold/15 border border-gold/30 text-gold-light text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-[2px]">
+              Our Mission
+            </span>
+
+            <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              To form thoughtful, courageous &amp;<br />
+              <span className="italic text-gold-light font-normal">principled human beings</span>
+            </h2>
+
+            <div className="bg-white/[0.04] border border-gold/30 p-8 sm:p-10 md:p-12 rounded-[2px] backdrop-blur-sm shadow-2xl relative mt-8 text-left">
+              <span className="absolute -top-5 left-8 text-6xl text-gold/25 font-serif select-none pointer-events-none">“</span>
+              <p className="font-serif-display italic text-base sm:text-lg md:text-[19px] text-white/95 leading-relaxed tracking-wide">
+                The School of Excellence exists to form thoughtful, courageous and principled human beings. We begin with the child, weighing every decision against what serves their long-term flourishing. We pursue mastery over marks, cultivating scholars who question, reason and form independent judgment rather than merely excel within existing systems. We shape character as deliberately as intellect, safeguarding each child’s dignity and nurturing the curiosity and creative courage that original thought requires. In trusted partnership with families, we prepare our students not for a fixed world but for shifting ground, equipping them to think deeply, create boldly and lead responsibly, and to build lives defined by lasting purpose, integrity and meaningful contribution.
+              </p>
+
+              <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs">
+                <span className="text-gold uppercase tracking-widest font-semibold text-[11px]">
+                  Institutional Mission • The School of Excellence
+                </span>
+                <span className="text-white/50 italic text-[11px]">
+                  Cambridge International (IGCSE) • Vasai West
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── OUR MASCOT ── */}
       <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite border-t border-bordercream/60">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">

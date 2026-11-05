@@ -154,48 +154,25 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 opacity-10 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(var(--gold) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 mt-8">
+        <div className="max-w-4xl mx-auto text-center relative z-10 my-auto py-10 md:py-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="inline-block bg-gold/15 border border-gold/30 text-gold-light text-xs font-semibold uppercase tracking-widest px-4 py-1.5 mb-8 rounded-[2px]"
+            className="inline-block bg-gold/15 border border-gold/30 text-gold-light text-xs font-semibold uppercase tracking-widest px-4 py-1.5 mb-6 md:mb-7 rounded-[2px]"
           >
-            Admissions Open 2025–26
+            Admissions Open 2027–28
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-serif-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6"
+            className="font-serif-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight"
           >
             Where Potential<br />
             <span className="italic text-gold-light font-normal">Becomes</span> Excellence
           </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-white/75 text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10"
-          >
-            A future-focused institution nurturing confident, creative, compassionate learners through holistic, experiential education — from Playgroup to Grade 12.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="flex flex-wrap gap-4 justify-center"
-          >
-            <Link to="/admissions" className="bg-gold text-navy font-semibold text-[14px] px-8 py-3.5 rounded-[2px] hover:bg-gold-light hover:shadow-lg transition-all duration-200">
-              Apply for Admission
-            </Link>
-            <Link to="/contact" className="border border-white/60 text-white font-medium text-[14px] px-8 py-3.5 rounded-[2px] hover:bg-white/10 hover:border-white transition-all duration-200">
-              Book a Campus Tour
-            </Link>
-          </motion.div>
         </div>
 
         {/* Stats strip */}
@@ -203,7 +180,7 @@ const Home: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="max-w-5xl mx-auto w-full mt-16 md:mt-24 border-t border-white/10 pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10"
+          className="max-w-5xl mx-auto w-full mt-10 md:mt-16 border-t border-white/10 pt-6 md:pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10"
         >
           {stats.map((stat, idx) => (
             <div key={idx} className="text-center relative">
@@ -266,17 +243,6 @@ const Home: React.FC = () => {
               <cite className="text-xs text-gold-light font-semibold uppercase tracking-wider block">
                 — The School of Excellence Learning Framework
               </cite>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-cream p-5 border-t-2 border-teal rounded-[2px]">
-                <strong className="text-[10px] uppercase tracking-wider text-teal block mb-2 font-bold">Mission</strong>
-                <p className="text-muted text-[12px] leading-relaxed">Nurturing confident, compassionate, future-ready learners through experiential education and strong values.</p>
-              </div>
-              <div className="bg-cream p-5 border-t-2 border-teal rounded-[2px]">
-                <strong className="text-[10px] uppercase tracking-wider text-teal block mb-2 font-bold">Vision</strong>
-                <p className="text-muted text-[12px] leading-relaxed">Empowering children to think independently, lead responsibly, and contribute meaningfully to the world.</p>
-              </div>
             </div>
           </motion.div>
         </div>
@@ -455,7 +421,7 @@ const Home: React.FC = () => {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-3xl pointer-events-none -mr-48 -mt-48" />
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="max-w-xl text-center md:text-left space-y-3">
-            <h2 className="font-serif-display text-3xl md:text-4xl font-bold leading-tight">Admissions Open for 2025–26</h2>
+            <h2 className="font-serif-display text-3xl md:text-4xl font-bold leading-tight">Admissions Open for 2027–28</h2>
             <p className="text-sm text-navy/80 leading-relaxed font-medium">
               Join a learning community where every child is known, valued, and challenged to become the best version of themselves.
             </p>

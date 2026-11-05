@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import AdmissionModal from './AdmissionModal';
+import RightActionTabs from './RightActionTabs';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Layout: React.FC = () => {
@@ -32,6 +34,12 @@ const Layout: React.FC = () => {
       </main>
       
       <Footer />
+
+      {/* 20-Second Admission Enquiry Popup Modal */}
+      <AdmissionModal />
+
+      {/* Floating Action Tabs on Right Edge (Reference: TISB) */}
+      <RightActionTabs />
     </div>
   );
 };
