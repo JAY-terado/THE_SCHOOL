@@ -60,17 +60,14 @@ const Admissions: React.FC = () => {
 
   const steps = [
     { num: '01', title: 'Enquiry Form', desc: 'Fill out our online enquiry form or call us directly. Our team will reach out within 24 hours to answer your questions and share programme details.' },
-    { num: '02', title: 'Campus Visit', desc: 'Schedule a guided tour of our campus. Meet our educators, see our facilities, and get a feel for the SOE learning environment firsthand.' },
+    { num: '02', title: 'Campus Visit', desc: 'Schedule a guided tour of our campus. Meet our educators, see our facilities, and get a feel for the TSE learning environment firsthand.' },
     { num: '03', title: 'Interaction & Assessment', desc: 'A friendly, age-appropriate interaction session with your child — not a test, but a conversation. We want to understand how they learn and what excites them.' },
-    { num: '04', title: 'Document Submission', desc: 'Submit required documents: birth certificate, previous school records, photographs, and any medical or learning support information we should know about.' },
+    { num: '04', title: 'Document Submission', desc: 'Submit the required documents: birth certificate, previous school records, photographs, and any medical support information we should be aware of.' },
     { num: '05', title: 'Enrolment Confirmation', desc: 'Complete fee payment and receive your enrolment pack, orientation schedule, and your child\'s welcome kit. The journey begins here.' },
   ];
 
   const faqs = [
-    {
-      q: 'What curriculum does The School of Excellence follow?',
-      a: 'We follow the CBSE (Central Board of Secondary Education) and Cambridge international curricula, enhanced with our own SOE Learning Framework that integrates 21st century skills, experiential learning, values education, and holistic development across all grades.'
-    },
+    
     {
       q: 'What is the student-teacher ratio?',
       a: 'We maintain a low student-teacher ratio to ensure every child receives personalised attention. For Early Years and Primary sections, our ratio is approximately 10:1, and for Middle and Secondary sections, 15:1. This allows teachers to truly know, support, and challenge each learner.'
@@ -97,7 +94,7 @@ const Admissions: React.FC = () => {
     },
     {
       q: 'How do you support children with different learning needs?',
-      a: 'We believe every child can learn when properly supported. Our trained special educators, school counsellors, and differentiated learning approach ensure children with varied learning profiles — including dyslexia, ADHD, or processing differences — receive the support they need to thrive.'
+      a: 'We believe every child can learn when properly supported. Our trained special educators, school counsellors, and differentiated learning approach ensure that children with varied learning profiles are supported.'
     }
   ];
 
@@ -136,13 +133,13 @@ const Admissions: React.FC = () => {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE SOE ── */}
+      {/* ── WHY CHOOSE TSE ── */}
       <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Parents Choose SOE</span>
+            <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Families Entrust Us</span>
             <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">
-              What you're choosing when you choose us
+              A definitive foundation for a complex world.
             </h2>
           </div>
 
@@ -168,8 +165,8 @@ const Admissions: React.FC = () => {
           <motion.div {...fadeInUp} className="md:col-span-5 space-y-6">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">The Process</span>
             <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">
-              Five simple steps<br />
-              <span className="italic text-teal font-normal">to enrolment</span>
+              Your Pathway<br />
+              <span className="italic text-teal font-normal">to Enrolment</span>
             </h2>
             <p className="text-muted text-sm leading-relaxed">
               We've designed our admissions process to be warm, transparent, and focused on understanding your child as a whole person — not just assessing academic readiness.
@@ -430,48 +427,34 @@ const Admissions: React.FC = () => {
 
       {/* ── DOCUMENTS REQUIRED ── */}
       <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
             <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Documents Required</span>
             <h2 className="font-serif-display text-3xl font-bold text-navy leading-tight">What you need to bring</h2>
             <p className="text-muted text-xs leading-relaxed">Please ensure you have self-attested copies of the following documents ready at the time of verification.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <motion.div {...fadeInUp} className="bg-white p-6 border-t-[3px] border-teal rounded-[2px] shadow-sm">
-              <h3 className="font-serif-display text-base font-bold text-navy mb-4 flex items-center gap-2">
-                <FileText size={18} className="text-teal" /> For All Students
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div {...fadeInUp} className="bg-white p-8 border-t-[3px] border-teal rounded-[2px] shadow-sm">
+              <h3 className="font-serif-display text-lg font-bold text-navy mb-5 flex items-center gap-2.5">
+                <FileText size={20} className="text-teal" /> For All Students
               </h3>
-              <ul className="space-y-2.5 text-xs text-muted">
-                <li className="flex gap-2">✓ <span>Child's birth certificate (original + copy)</span></li>
-                <li className="flex gap-2">✓ <span>4 passport-size photographs</span></li>
-                <li className="flex gap-2">✓ <span>Aadhar card (child &amp; parents)</span></li>
-                <li className="flex gap-2">✓ <span>Proof of local address</span></li>
-                <li className="flex gap-2">✓ <span>Medical/immunisation records</span></li>
+              <ul className="space-y-3 text-xs md:text-[13px] text-muted">
+                <li className="flex gap-2.5 items-start">✓ <span>Child's birth certificate (original + copy)</span></li>
+                <li className="flex gap-2.5 items-start">✓ <span>2 passport-size photographs of the child and 1 each of the parents</span></li>
+                <li className="flex gap-2.5 items-start">✓ <span>Aadhaar card (child &amp; parents)</span></li>
+                <li className="flex gap-2.5 items-start">✓ <span>Pan Card (Parents)</span></li>
+                <li className="flex gap-2.5 items-start">✓ <span>Fitness Certificate</span></li>
               </ul>
             </motion.div>
 
-            <motion.div {...fadeInUp} className="bg-white p-6 border-t-[3px] border-gold rounded-[2px] shadow-sm">
-              <h3 className="font-serif-display text-base font-bold text-navy mb-4 flex items-center gap-2">
-                <FileText size={18} className="text-gold" /> For Grades 1–12
+            <motion.div {...fadeInUp} className="bg-white p-8 border-t-[3px] border-gold rounded-[2px] shadow-sm">
+              <h3 className="font-serif-display text-lg font-bold text-navy mb-5 flex items-center gap-2.5">
+                <FileText size={20} className="text-gold" /> For Grades 2–12
               </h3>
-              <ul className="space-y-2.5 text-xs text-muted">
-                <li className="flex gap-2">✓ <span>Previous school's Transfer Certificate (TC)</span></li>
-                <li className="flex gap-2">✓ <span>Last 2 years' academic report cards</span></li>
-                <li className="flex gap-2">✓ <span>Character certificate from previous principal</span></li>
-                <li className="flex gap-2">✓ <span>Any diagnostic learning assessment reports</span></li>
-              </ul>
-            </motion.div>
-
-            <motion.div {...fadeInUp} className="bg-white p-6 border-t-[3px] border-navy rounded-[2px] shadow-sm">
-              <h3 className="font-serif-display text-base font-bold text-navy mb-4 flex items-center gap-2">
-                <FileText size={18} className="text-navy" /> Additional Documents
-              </h3>
-              <ul className="space-y-2.5 text-xs text-muted">
-                <li className="flex gap-2">✓ <span>Special education/support records (if any)</span></li>
-                <li className="flex gap-2">✓ <span>Sports or arts recognition credentials</span></li>
-                <li className="flex gap-2">✓ <span>Completed enrollment checklist form</span></li>
-                <li className="flex gap-2">✓ <span>Registration fee proof</span></li>
+              <ul className="space-y-3 text-xs md:text-[13px] text-muted">
+                <li className="flex gap-2.5 items-start">✓ <span>Previous school's Transfer Certificate (TC)</span></li>
+                <li className="flex gap-2.5 items-start">✓ <span>Last year's academic report card</span></li>
               </ul>
             </motion.div>
           </div>

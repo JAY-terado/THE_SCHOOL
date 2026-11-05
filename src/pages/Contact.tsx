@@ -300,7 +300,7 @@ const Contact: React.FC = () => {
               <div>
                 <h3 className="font-serif-display text-lg font-bold text-gold-light mb-1">Schedule a Campus Tour</h3>
                 <p className="text-white/60 text-xs leading-relaxed max-w-sm">
-                  The best way to experience SOE is in person. Book a guided visit and see our campus come alive.
+                  The best way to experience TSE is in person. Book a guided visit and see our campus come alive.
                 </p>
               </div>
               <Link

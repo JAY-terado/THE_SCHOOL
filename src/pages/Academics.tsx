@@ -365,7 +365,7 @@ const Academics: React.FC = () => {
             <span className="italic text-gold-light font-normal">real life</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            A complete grade-by-grade roadmap from Playgroup through Grade 12 — so you always know exactly what your child is learning, and why.
+            A comprehensive academic roadmap from early childhood to Grade 12, mapping every milestone with absolute clarity of vision and academic intent.
           </p>
         </div>
       </section>

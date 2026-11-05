@@ -16,7 +16,6 @@ const Home: React.FC = () => {
     'Safe & Secure Campus',
     'Experienced Educators',
     'Holistic Development',
-    'Smart Classrooms',
     'Sports & Performing Arts',
     'Activity-Based Learning',
     'Parent Partnership',
@@ -26,7 +25,7 @@ const Home: React.FC = () => {
     {
       icon: <Award className="text-teal" size={32} />,
       title: 'Holistic Development',
-      desc: 'Balanced focus on academics, creativity, leadership, sports, and emotional intelligence — because the whole child matters.',
+      desc: 'Deliberate synthesis of advanced scholarship, athletic discipline, the arts, and emotional maturity—cultivating the complete individual.',
     },
     {
       icon: <Compass className="text-teal" size={32} />,
@@ -36,17 +35,17 @@ const Home: React.FC = () => {
     {
       icon: <BookOpen className="text-teal" size={32} />,
       title: 'Future-Ready Curriculum',
-      desc: 'Critical thinking, digital literacy, communication, and collaboration woven into every grade and subject.',
+      desc: 'Instilling the intellectual agility, technological command, and collaborative leadership essential for an evolving global landscape.',
     },
     {
       icon: <Star className="text-teal" size={32} />,
       title: 'Passionate Educators',
-      desc: 'Dedicated mentors who see teaching as a calling — inspiring curiosity, building confidence, and knowing each child by name.',
+      desc: 'Exceptional mentors who do more than instruct—they cultivate ambition, foster resilience, and know the unique measure of every learner.',
     },
     {
       icon: <ShieldAlert className="text-teal" size={32} />,
       title: 'Safe & Nurturing Campus',
-      desc: 'A child-friendly, CCTV-secured environment where every student feels emotionally safe, valued, and seen.',
+      desc: 'An inspiring haven built on uncompromising security and emotional reassurance, allowing young minds the freedom to explore, express, and excel with confidence.',
     },
     {
       icon: <Heart className="text-teal" size={32} />,
@@ -90,7 +89,7 @@ const Home: React.FC = () => {
     { num: '01', title: 'Inquiry-Based Learning', desc: 'Students ask questions, investigate, and construct understanding — teachers guide, not dictate.' },
     { num: '02', title: 'Collaborative Classrooms', desc: 'Peer learning, group projects, and communication skills built into the fabric of every lesson.' },
     { num: '03', title: 'Creative Exploration', desc: 'Art, music, theatre, and storytelling are not extras — they are how children learn to think.' },
-    { num: '04', title: 'Technology Integration', desc: 'Smart classrooms, robotics labs, and digital literacy prepare students for a tech-forward world.' },
+    { num: '04', title: 'Technology Integration', desc: 'Robotics labs, STEM studios, and advanced digital literacy prepare students for a tech-forward world.' },
     { num: '05', title: 'Values & Leadership', desc: 'Character education, student councils, and service programmes develop responsible citizens.' },
     { num: '06', title: 'Emotional Wellbeing', desc: 'A happy child learns best. Our counsellors and culture ensure every child feels heard and secure.' },
   ];
@@ -102,7 +101,7 @@ const Home: React.FC = () => {
     { icon: '🎭', name: 'Auditorium' },
     { icon: '🏃', name: 'Sports Complex' },
     { icon: '🎨', name: 'Art & Music Studios' },
-    { icon: '💻', name: 'Smart Classrooms' },
+    { icon: '🏛️', name: 'Collaborative Studios' },
     { icon: '🏥', name: 'Medical Room' },
   ];
 
@@ -120,7 +119,7 @@ const Home: React.FC = () => {
       initial: 'R',
     },
     {
-      quote: '"What sets SOE apart is the balance — academics, sports, arts, values. My child is learning to be a human being, not just a student."',
+      quote: '"What sets TSE apart is the balance — academics, sports, arts, values. My child is learning to be a human being, not just a student."',
       author: 'Parent of a Grade 9 Student',
       year: 'Enrolled 2018',
       initial: 'S',
@@ -150,10 +149,10 @@ const Home: React.FC = () => {
       {/* ── HERO SECTION ── */}
       <section className="relative bg-navy text-white min-h-[85vh] flex flex-col justify-center overflow-hidden py-16 px-4 md:px-8 border-b border-gold/10">
         <div className="absolute inset-0 bg-glow-radial opacity-60 pointer-events-none" />
-        
+
         {/* Decorative Grid Lines */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" 
-             style={{ backgroundImage: 'radial-gradient(var(--gold) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        <div className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{ backgroundImage: 'radial-gradient(var(--gold) 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
 
         <div className="max-w-4xl mx-auto text-center relative z-10 mt-8">
           <motion.div
@@ -248,10 +247,10 @@ const Home: React.FC = () => {
               <span className="italic text-teal font-normal">beyond the classroom</span>
             </h2>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              At The School of Excellence, we believe every child carries within them a unique constellation of talents, curiosity, and potential. Our role is not to fill vessels — it is to light fires.
+              At The School of Excellence, we do not view education as a passive pursuit. We view it as the cultivation of intellect, character, and vision.
             </p>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              We combine academic rigour with creativity, emotional wellbeing, and strong values, building learners who are as comfortable with empathy as they are with equations. This is education designed for the world your child will actually inhabit.
+              Here, rigorous academic enquiry meets creative daring and emotional composure. We develop agile thinkers who move effortlessly between analytical complexity and human empathy—scholars prepared not merely to navigate the modern world, but to shape it.
             </p>
             <Link to="/about" className="inline-flex items-center gap-2 border-2 border-navy text-navy font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-[2px] hover:bg-navy hover:text-white transition-all duration-200">
               Our Story &amp; Philosophy <ArrowRight size={14} />
@@ -268,7 +267,7 @@ const Home: React.FC = () => {
                 — The School of Excellence Learning Framework
               </cite>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="bg-cream p-5 border-t-2 border-teal rounded-[2px]">
                 <strong className="text-[10px] uppercase tracking-wider text-teal block mb-2 font-bold">Mission</strong>
@@ -287,14 +286,14 @@ const Home: React.FC = () => {
       <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-t border-b border-bordercream/40">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-xl mx-auto mb-16 space-y-3">
-            <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Families Choose Us</span>
+            <span className="text-xs font-semibold text-gold uppercase tracking-widest block">Why Leading Families Entrust Us</span>
             <h2 className="font-serif-display text-3xl md:text-4.5xl font-bold text-navy leading-tight">
-              Six pillars of a<br />
-              <span className="italic text-teal font-normal">transformative education</span>
+              The six hallmarks of<br />
+              <span className="italic text-teal font-normal">enduring excellence</span>
             </h2>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="initial"
             whileInView="whileInView"

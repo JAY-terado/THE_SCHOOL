@@ -36,10 +36,10 @@ const Facilities: React.FC = () => {
       items: [
         {
           icon: '📖',
-          name: 'Smart Classrooms',
-          desc: 'Climate-controlled classrooms equipped with ergonomic furniture, smart interactive screens, and layouts that easily adapt from lectures to group projects.',
-          metric: '1:1 Interactive Boards',
-          features: ['Ergonomic seating', 'Abundant natural light', 'Fully audio-visual integrated']
+          name: 'Collaborative Learning Studios',
+          desc: 'Climate-controlled academic spaces equipped with ergonomic furniture and adaptable layouts that support both focused seminar study and dynamic group inquiry.',
+          metric: 'Ergonomic Architecture',
+          features: ['Ergonomic seating', 'Abundant natural light', 'Acoustic design']
         },
         {
           icon: '📚',
@@ -163,7 +163,7 @@ const Facilities: React.FC = () => {
         <div className="max-w-5xl mx-auto flex items-center gap-1.5">
           <Link to="/" className="text-teal hover:underline font-medium">Home</Link>
           <span className="text-muted/60">/</span>
-          <span>Campus Facilities</span>
+          <span>Infrastructure</span>
         </div>
       </div>
 
@@ -176,7 +176,7 @@ const Facilities: React.FC = () => {
           </span>
           <h1 className="font-serif-display text-4xl md:text-6xl font-bold leading-tight">
             Our Campus &amp;<br />
-            <span className="italic text-gold-light font-normal">world-class facilities</span>
+            <span className="italic text-gold-light font-normal">world-class infrastructure</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             We believe that physical spaces are the "third teacher". Explore how our school is built to inspire wonder, protect safety, and support human flourishing.

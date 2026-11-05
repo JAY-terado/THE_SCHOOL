@@ -16,10 +16,10 @@ const About: React.FC = () => {
   ];
 
   const philosophy = [
-    { num: '01', title: 'Child-Centered Learning', desc: 'Every child learns differently. We personalise experiences to support individual growth, not uniform outcomes.' },
+    { num: '01', title: 'Child-Centered Learning', desc: 'No two minds are identical. We curate learning pathways that accelerate individual strengths rather than forcing uniform metrics.' },
     { num: '02', title: 'Experiential Education', desc: 'Learning happens through exploration, projects, interaction, and real-world experiences — not passive reception.' },
     { num: '03', title: 'Future-Ready Skills', desc: 'Critical thinking, communication, creativity, collaboration, and digital literacy are woven into every grade.' },
-    { num: '04', title: 'Emotional Wellbeing', desc: 'A happy child learns best. Emotional safety and confidence-building are foundational to everything we do.' },
+    { num: '04', title: 'Emotional Wellbeing', desc: 'A culture of profound emotional reassurance and psychological safety, instilling the inner composure necessary for bold intellectual risk.' },
     { num: '05', title: 'Values-Based Education', desc: 'Strong character and ethics are embedded into the curriculum and school culture — not added on.' },
     { num: '06', title: 'Innovation & Creativity', desc: 'Students are encouraged to experiment, create, and think independently in every subject and activity.' },
   ];
@@ -50,12 +50,50 @@ const About: React.FC = () => {
             Who We Are
           </span>
           <h1 className="font-serif-display text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-            Building more than students —<br />
-            <span className="italic text-gold-light font-normal">building humans</span>
+            Beyond academic distinction —<br />
+            <span className="italic text-gold-light font-normal">shaping the complete individual</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            Our story, philosophy, and the values that define everything we do at The School of Excellence.
+            The heritage, philosophy, and foundational standards that guide The School of Excellence.
           </p>
+        </div>
+      </section>
+
+      {/* ── WELCOME MESSAGE ── */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-cream border-b border-bordercream/60">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <motion.div {...fadeInUp} className="md:col-span-7 space-y-5">
+              <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
+                Welcome Message
+              </span>
+              <h2 className="font-serif-display text-3xl md:text-4.5xl font-bold text-navy leading-tight">
+                Welcome to<br />
+                <span className="italic text-teal font-normal">The School of Excellence</span>
+              </h2>
+              <p className="text-muted text-sm md:text-[15px] leading-relaxed">
+                The School of Excellence is a forward-thinking Cambridge International (IGCSE) school in Vasai West, bringing a distinct, world-class standard to modern schooling. We pair advanced computational and scientific inquiry with profound personal mentorship, athletic discipline, and global citizenship.
+              </p>
+              <p className="text-muted text-sm md:text-[15px] leading-relaxed">
+                Conceived as an intentional sanctuary for young minds, TSE redefines contemporary education through bespoke student pathways and world-standard infrastructure. Our institutional ethos comes alive through every classroom dialogue, laboratory experiment, and creative pursuit.
+              </p>
+            </motion.div>
+
+            <motion.div {...fadeInUp} className="md:col-span-5 space-y-3.5">
+              <div className="bg-white p-5 border-l-4 border-gold rounded-[2px] shadow-sm">
+                <h4 className="font-serif-display text-sm font-bold text-navy mb-1">Inquiry-Led Cambridge Pedagogy</h4>
+                <p className="text-muted text-xs leading-relaxed">Cultivating analytical mastery, deep conceptual reasoning, and internationally recognized academic rigor.</p>
+              </div>
+              <div className="bg-white p-5 border-l-4 border-teal rounded-[2px] shadow-sm">
+                <h4 className="font-serif-display text-sm font-bold text-navy mb-1">Holistic Character and Moral Grounding</h4>
+                <p className="text-muted text-xs leading-relaxed">Instilling integrity, emotional maturity, and the ethical conviction to lead with empathy.</p>
+              </div>
+              <div className="bg-white p-5 border-l-4 border-navy rounded-[2px] shadow-sm">
+                <h4 className="font-serif-display text-sm font-bold text-navy mb-1">Advanced Intellectual and Physical Mastery</h4>
+                <p className="text-muted text-xs leading-relaxed">Balancing cognitive agility and STEM innovation with elite sportsmanship and physical grit.</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -71,13 +109,13 @@ const About: React.FC = () => {
               <span className="italic text-teal font-normal">redefine education</span>
             </h2>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              The School of Excellence was founded on a simple but profound belief: that every child deserves an education that sees them fully — not just as a learner, but as a human being with unique potential, emotions, and gifts waiting to be discovered.
+              The School of Excellence is founded on a singular conviction: that true education must honour the complete individual—recognising not merely an academic trajectory, but a human being endowed with distinct intellect, character, and promise.
             </p>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              We began with a question: what would a school look like if it were truly built around children — not curricula, not examinations, not league tables — but the whole, complex, beautiful child in front of us every day?
+              We begin with a fundamental question: what happens when an institution is intentionally calibrated around the scholar, rather than the constraints of standardized metrics and rigid curricula?
             </p>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              The answer became The School of Excellence. A place where academic rigour and emotional warmth coexist. Where the arts are as valued as mathematics. Where every teacher knows every child by name, not just by score.
+              The answer is The School of Excellence. Designed as a sanctuary of uncompromising scholarship and authentic pastoral care—an environment where artistic daring and mathematical rigor carry equal weight, and where every mentor understands the unique measure of every child.
             </p>
           </motion.div>
 
@@ -89,6 +127,37 @@ const About: React.FC = () => {
             <cite className="text-xs text-gold-light font-semibold uppercase tracking-wider block">
               — The Founders, The School of Excellence
             </cite>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── OUR MASCOT ── */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-offwhite border-t border-bordercream/60">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+          <motion.div {...fadeInUp} className="md:col-span-4 flex justify-center">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-navy flex items-center justify-center p-6 border-4 border-gold shadow-xl relative group">
+              <img
+                src="/logo.png"
+                alt="The Mascot of Excellence"
+                className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(201,168,76,0.35)] group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div {...fadeInUp} className="md:col-span-8 space-y-5">
+            <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
+              Our Mascot
+            </span>
+            <h2 className="font-serif-display text-3xl md:text-4.5xl font-bold text-navy leading-tight">
+              Our Mascot —<br />
+              <span className="italic text-teal font-normal">Why we have chosen it</span>
+            </h2>
+            <p className="text-muted text-sm md:text-[15px] leading-relaxed">
+              At The School of Excellence, our emblem and mascot embody the eternal flame of wisdom, enlightened intellect, and unwavering resilience. Flanked by the classical laurel of academic distinction, it represents the transformative journey every scholar undertakes within our halls.
+            </p>
+            <p className="text-muted text-sm md:text-[15px] leading-relaxed">
+              We chose this symbol because true education does not fill vessels—it lights fires. The torch is a sacred trust passed from mentor to scholar, illuminating curiosity, commanding self-discipline, and inspiring young leaders to navigate and shape our world with courage, honor, and unyielding purpose.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -168,7 +237,7 @@ const About: React.FC = () => {
           <div className="text-center max-w-sm mx-auto mb-10">
             <h3 className="font-serif-display text-2xl font-bold text-navy mb-2">Core Values</h3>
             <p className="text-muted text-xs leading-relaxed">
-              Eight principles that shape everything we teach, model, and celebrate.
+              Eight enduring standards that define our culture, scholarship, and community.
             </p>
           </div>
 

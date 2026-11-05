@@ -33,12 +33,12 @@ const CampusLife: React.FC = () => {
     {
       icon: <Leaf size={24} className="text-gold" />,
       title: 'Eco & Sustainability Club',
-      desc: 'Environmental stewardship, composting, waste reduction, and green campus initiatives. Our eco leaders make SOE a genuinely sustainable community.',
+      desc: 'Environmental stewardship, composting, waste reduction, and green campus initiatives. Our eco leaders make TSE a genuinely sustainable community.',
     },
     {
       icon: <Camera size={24} className="text-gold" />,
       title: 'Photography & Media Club',
-      desc: 'Storytelling through images, video editing, and school journalism. Club members produce the SOE newsletter and social content.',
+      desc: 'Storytelling through images, video editing, and school journalism. Club members produce the TSE newsletter and social content.',
     },
     {
       icon: <BookOpen size={24} className="text-gold" />,
@@ -108,7 +108,7 @@ const CampusLife: React.FC = () => {
         <div className="absolute inset-0 bg-glow-radial opacity-30 pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 space-y-4">
           <span className="text-xs font-semibold text-gold uppercase tracking-widest block">
-            Life at SOE
+            Life at TSE
           </span>
           <h1 className="font-serif-display text-4xl md:text-6xl font-bold leading-tight">
             Where every day is<br />
@@ -129,7 +129,7 @@ const CampusLife: React.FC = () => {
               Activities that shape the whole child
             </h2>
             <p className="text-muted text-xs md:text-sm max-w-md mx-auto leading-relaxed">
-              At SOE, co-curricular activities are not extras — they are integral to how we develop confident, well-rounded human beings. Every club, event, and programme is designed with a developmental purpose.
+              At TSE, co-curricular activities are not extras — they are integral to how we develop confident, well-rounded human beings. Every club, event, and programme is designed with a developmental purpose.
             </p>
           </div>
 
@@ -188,7 +188,7 @@ const CampusLife: React.FC = () => {
               <span className="italic text-teal font-normal">not just achievers</span>
             </h2>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
-              Leadership at SOE isn't reserved for the top of the class — it's cultivated in every child through opportunities to serve, speak, decide, and inspire others.
+              Leadership at TSE isn't reserved for the top of the class — it's cultivated in every child through opportunities to serve, speak, decide, and inspire others.
             </p>
             <p className="text-muted text-sm md:text-[15px] leading-relaxed">
               Our Student Council, elected by peers from Grades 5–12, governs student affairs, organises events, and acts as the voice of the student body in school decision-making.

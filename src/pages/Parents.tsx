@@ -90,7 +90,7 @@ const Parents: React.FC = () => {
 
   const testimonials = [
     {
-      quote: '"We\'d visited three schools before SOE. The moment we walked in, we felt the difference — the warmth, the calm, the sense that children actually matter here. We enrolled that week."',
+      quote: '"We\'d visited three schools before TSE. The moment we walked in, we felt the difference — the warmth, the calm, the sense that children actually matter here. We enrolled that week."',
       author: 'Parent of a Grade 3 Student',
       year: 'Enrolled 2022',
       initial: 'A',
@@ -102,7 +102,7 @@ const Parents: React.FC = () => {
       initial: 'M',
     },
     {
-      quote: '"My daughter struggled with anxiety in her previous school. SOE\'s counsellor worked with her, and with us, over six months. She is now a confident, happy child. This school genuinely cares."',
+      quote: '"My daughter struggled with anxiety in her previous school. TSE\'s counsellor worked with her, and with us, over six months. She is now a confident, happy child. This school genuinely cares."',
       author: 'Parent of a Grade 5 Student',
       year: 'Enrolled 2021',
       initial: 'S',
@@ -162,7 +162,7 @@ const Parents: React.FC = () => {
             <span className="italic text-gold-light font-normal">you are partners</span>
           </h1>
           <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-            At SOE, we believe the best education happens when school and home work together. Here's everything you need to stay informed, involved, and connected.
+            At TSE, we believe the best education happens when school and home work together. Here's everything you need to stay informed, involved, and connected.
           </p>
         </div>
       </section>

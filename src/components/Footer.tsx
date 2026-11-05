@@ -64,13 +64,23 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/facilities" className="text-white/60 hover:text-white transition-colors">
-                  Campus Facilities
+                <Link to="/infrastructure" className="text-white/60 hover:text-white transition-colors">
+                  Campus Infrastructure
                 </Link>
               </li>
               <li>
                 <Link to="/campus-life" className="text-white/60 hover:text-white transition-colors">
                   Student Activities
+                </Link>
+              </li>
+              <li>
+                <Link to="/news" className="text-white/60 hover:text-white transition-colors">
+                  News &amp; Events
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="text-white/60 hover:text-white transition-colors">
+                  Careers at TSE
                 </Link>
               </li>
               <li>
