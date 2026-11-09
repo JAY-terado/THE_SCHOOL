@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Clock, ArrowRight, Check } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowRight, Check, AlertCircle } from 'lucide-react';
+import { validateEmail } from '../utils/validation';
 
 const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 4000);
+    const err = validateEmail(email);
+    if (err) {
+      setError(err);
+      return;
     }
+    setError('');
+    setSubscribed(true);
+    setEmail('');
+    setTimeout(() => setSubscribed(false), 4000);
   };
 
   const currentYear = new Date().getFullYear();
@@ -99,14 +105,18 @@ const Footer: React.FC = () => {
             <p className="text-white/60 text-xs mb-4">
               Receive school event updates, admission reminders, and educational resources directly in your inbox.
             </p>
-            <form onSubmit={handleSubscribe} className="relative mb-6">
+            <form onSubmit={handleSubscribe} noValidate className="relative mb-6">
               <input
                 type="email"
-                required
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                }}
                 placeholder="Your email address"
-                className="w-full bg-navy-light border border-gold/25 focus:border-gold rounded-[2px] px-4 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none pr-12 transition-colors"
+                className={`w-full bg-navy-light border rounded-[2px] px-4 py-2.5 text-xs text-white placeholder-white/40 focus:outline-none pr-12 transition-colors ${
+                  error ? 'border-rose-400 focus:border-rose-400' : 'border-gold/25 focus:border-gold'
+                }`}
               />
               <button
                 type="submit"
@@ -116,6 +126,11 @@ const Footer: React.FC = () => {
                 {subscribed ? <Check size={14} className="text-green-800" /> : <ArrowRight size={14} />}
               </button>
             </form>
+            {error && (
+              <span className="text-[11px] text-rose-400 flex items-center gap-1 -mt-4 mb-4">
+                <AlertCircle size={12} className="shrink-0" /> {error}
+              </span>
+            )}
             {subscribed && (
               <span className="text-[10px] text-green-400 block -mt-4 mb-4">
                 Thank you! You have successfully subscribed.

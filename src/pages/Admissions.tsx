@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, FileText, ChevronDown, Award, ShieldAlert, Heart, Trophy, UserCheck, Users, ArrowRight } from 'lucide-react';
+import { Check, FileText, ChevronDown, Award, ShieldAlert, Heart, Trophy, UserCheck, Users, ArrowRight, AlertCircle } from 'lucide-react';
+import { validateName, validatePhone, validateEmail, validateRequired, validateDob, validateMessage } from '../utils/validation';
 
 const Admissions: React.FC = () => {
   // Form state
@@ -17,17 +18,89 @@ const Admissions: React.FC = () => {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   // FAQ state
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
+  const validateField = (name: string, value: string): string | null => {
+    switch (name) {
+      case 'parentName':
+        return validateName(value, "Parent's Name");
+      case 'phone':
+        return validatePhone(value);
+      case 'email':
+        return validateEmail(value);
+      case 'childName':
+        return validateName(value, "Child's Name");
+      case 'childDob':
+        return validateDob(value);
+      case 'grade':
+        return validateRequired(value, 'Applying Grade');
+      case 'message':
+        return validateMessage(value, 1000);
+      default:
+        return null;
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    let cleanValue = value;
+    if (name === 'phone') {
+      cleanValue = value.replace(/\D/g, '').slice(0, 10);
+    }
+    setFormData((prev) => ({ ...prev, [name]: cleanValue }));
+
+    const err = validateField(name, cleanValue);
+    setErrors((prev) => ({ ...prev, [name]: err || '' }));
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const err = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: err || '' }));
+  };
+
+  const isFieldValid = (name: string, value: string) => {
+    return value.trim().length > 0 && !errors[name] && validateField(name, value) === null;
+  };
+
+  const getFieldClass = (name: string, value: string) => {
+    const isErr = touched[name] && !!errors[name];
+    const isValid = isFieldValid(name, value);
+
+    if (isErr) {
+      return 'border-rose-400 focus:border-rose-500 bg-rose-50/20';
+    }
+    if (isValid) {
+      return 'border-emerald-500 focus:border-emerald-500 bg-emerald-50/15';
+    }
+    return 'border-bordercream focus:border-teal';
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const newErrors: Record<string, string> = {};
+    const newTouched: Record<string, boolean> = {};
+    const fields = ['parentName', 'phone', 'email', 'childName', 'childDob', 'grade', 'message'];
+
+    fields.forEach((f) => {
+      newTouched[f] = true;
+      const err = validateField(f, formData[f as keyof typeof formData] || '');
+      if (err) newErrors[f] = err;
+    });
+
+    setTouched(newTouched);
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     // Simulate API call
     console.log('Enquiry Data Submitted:', formData);
     setIsSubmitted(true);
@@ -251,6 +324,7 @@ const Admissions: React.FC = () => {
                 <motion.form
                   key="form"
                   onSubmit={handleSubmit}
+                  noValidate
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -263,25 +337,46 @@ const Admissions: React.FC = () => {
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Parent / Guardian Name *</label>
                       <input
                         type="text"
-                        required
                         name="parentName"
                         value={formData.parentName}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         placeholder="Full Name"
-                        className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                        className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                          'parentName',
+                          formData.parentName
+                        )}`}
                       />
+                      {touched.parentName && errors.parentName && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.parentName}</span>
+                        </p>
+                      )}
                     </div>
                     <div className="space-y-1">
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Mobile Number *</label>
                       <input
                         type="tel"
-                        required
                         name="phone"
+                        maxLength={10}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="+1 (555) 000-0000"
-                        className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                        onBlur={handleBlur}
+                        placeholder="10-digit mobile number"
+                        className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                          'phone',
+                          formData.phone
+                        )}`}
                       />
+                      {touched.phone && errors.phone && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.phone}</span>
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -289,13 +384,22 @@ const Admissions: React.FC = () => {
                     <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Email Address *</label>
                     <input
                       type="email"
-                      required
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       placeholder="email@example.com"
-                      className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                      className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                        'email',
+                        formData.email
+                      )}`}
                     />
+                    {touched.email && errors.email && (
+                      <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                        <AlertCircle size={12} className="shrink-0" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -303,25 +407,43 @@ const Admissions: React.FC = () => {
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Child's Name *</label>
                       <input
                         type="text"
-                        required
                         name="childName"
                         value={formData.childName}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         placeholder="Child's Full Name"
-                        className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                        className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                          'childName',
+                          formData.childName
+                        )}`}
                       />
+                      {touched.childName && errors.childName && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.childName}</span>
+                        </p>
+                      )}
                     </div>
                     <div className="space-y-1">
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Child's Date of Birth *</label>
                       <input
                         type="text"
-                        required
                         name="childDob"
                         value={formData.childDob}
                         onChange={handleInputChange}
-                        placeholder="MM / DD / YYYY"
-                        className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                        onBlur={handleBlur}
+                        placeholder="DD / MM / YYYY"
+                        className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                          'childDob',
+                          formData.childDob
+                        )}`}
                       />
+                      {touched.childDob && errors.childDob && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.childDob}</span>
+                        </p>
+                      )}
                     </div>
                   </div>
 
@@ -329,11 +451,14 @@ const Admissions: React.FC = () => {
                     <div className="space-y-1">
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Applying for Grade *</label>
                       <select
-                        required
                         name="grade"
                         value={formData.grade}
                         onChange={handleInputChange}
-                        className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal"
+                        onBlur={handleBlur}
+                        className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors ${getFieldClass(
+                          'grade',
+                          formData.grade
+                        )}`}
                       >
                         <option value="">Select Grade</option>
                         <option>Playgroup</option>
@@ -344,6 +469,12 @@ const Admissions: React.FC = () => {
                           <option key={i + 1}>Grade {i + 1}</option>
                         ))}
                       </select>
+                      {touched.grade && errors.grade && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.grade}</span>
+                        </p>
+                      )}
                     </div>
                     <div className="space-y-1">
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Academic Year *</label>
@@ -377,14 +508,31 @@ const Admissions: React.FC = () => {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Questions or Special Requirements</label>
+                    <div className="flex justify-between items-center">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-navy">Questions or Special Requirements</label>
+                      <span className="text-[10px] text-muted">{formData.message.length}/1000</span>
+                    </div>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
+                      maxLength={1000}
                       placeholder="Tell us anything that would help us support your child better..."
-                      className="w-full bg-white border border-bordercream px-3 py-2 text-xs rounded-[2px] focus:outline-none focus:border-teal min-h-[100px] resize-y"
+                      className={`w-full bg-white border px-3 py-2 text-xs rounded-[2px] focus:outline-none transition-colors min-h-[100px] resize-y ${
+                        touched.message && errors.message
+                          ? 'border-rose-400 focus:border-rose-500 bg-rose-50/20'
+                          : formData.message.trim().length > 0
+                          ? 'border-emerald-500 focus:border-emerald-500 bg-emerald-50/15'
+                          : 'border-bordercream focus:border-teal'
+                      }`}
                     />
+                    {touched.message && errors.message && (
+                      <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                        <AlertCircle size={12} className="shrink-0" />
+                        <span>{errors.message}</span>
+                      </p>
+                    )}
                   </div>
 
                   <button

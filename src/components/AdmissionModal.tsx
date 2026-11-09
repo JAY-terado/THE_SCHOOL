@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { X, Check, ArrowRight, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
+import { validateName, validatePhone, validateEmail, validateRequired, validateMessage } from '../utils/validation';
 
 const AdmissionModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,18 +17,27 @@ const AdmissionModal: React.FC = () => {
     message: '',
   });
 
-  useEffect(() => {
-    // Check if dismissed in this session
-    const isDismissed = sessionStorage.getItem('tse_admission_modal_dismissed');
-    if (isDismissed) return;
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-    // Trigger after 20 seconds
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 20000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const validateField = (name: string, value: string): string | null => {
+    switch (name) {
+      case 'parentName':
+        return validateName(value, "Parent's Name");
+      case 'phone':
+        return validatePhone(value);
+      case 'email':
+        return validateEmail(value);
+      case 'childName':
+        return validateName(value, "Child's Name");
+      case 'grade':
+        return validateRequired(value, 'Applying Grade');
+      case 'message':
+        return validateMessage(value, 500);
+      default:
+        return null;
+    }
+  };
 
   const handleClose = () => {
     setIsOpen(false);
@@ -52,13 +62,81 @@ const AdmissionModal: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  useEffect(() => {
+    // Check if dismissed in this session
+    const isDismissed = sessionStorage.getItem('tse_admission_modal_dismissed');
+    if (isDismissed) return;
+
+    // Trigger after 20 seconds
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 20000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    let cleanValue = value;
+
+    if (name === 'phone') {
+      // Disallow any non-numeric characters and strictly limit to 10 digits max
+      cleanValue = value.replace(/\D/g, '').slice(0, 10);
+    }
+
+    setFormData((prev) => ({ ...prev, [name]: cleanValue }));
+
+    // Re-validate field on the fly
+    const error = validateField(name, cleanValue);
+    setErrors((prev) => ({ ...prev, [name]: error || '' }));
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setErrors((prev) => ({ ...prev, [name]: error || '' }));
+  };
+
+  const isFieldValid = (name: string, value: string) => {
+    return value.trim().length > 0 && !errors[name] && validateField(name, value) === null;
+  };
+
+  const getFieldClass = (name: string, value: string) => {
+    const isError = touched[name] && !!errors[name];
+    const isValid = isFieldValid(name, value);
+
+    if (isError) {
+      return 'border-rose-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20 text-navy';
+    }
+    if (isValid) {
+      return 'border-emerald-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-emerald-50/15 text-navy';
+    }
+    return 'border-stone-200 focus:border-gold focus:ring-2 focus:ring-gold/15 bg-white text-navy';
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const newErrors: Record<string, string> = {};
+    const newTouched: Record<string, boolean> = {};
+
+    const fieldsToValidate = ['parentName', 'phone', 'email', 'childName', 'grade', 'message'];
+    fieldsToValidate.forEach((field) => {
+      newTouched[field] = true;
+      const error = validateField(field, formData[field as keyof typeof formData] || '');
+      if (error) {
+        newErrors[field] = error;
+      }
+    });
+
+    setTouched(newTouched);
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length > 0) {
+      return;
+    }
+
     console.log('Admission Enquiry Submitted:', formData);
     setIsSubmitted(true);
     sessionStorage.setItem('tse_admission_modal_dismissed', 'true');
@@ -115,8 +193,8 @@ const AdmissionModal: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* Minimal Form */}
-                  <form onSubmit={handleSubmit} className="space-y-3.5">
+                  {/* Form with Real-time & Submit Validation */}
+                  <form onSubmit={handleSubmit} noValidate className="space-y-3.5">
                     {/* Row 1: Parent Name & Phone */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div className="space-y-1">
@@ -125,13 +203,22 @@ const AdmissionModal: React.FC = () => {
                         </label>
                         <input
                           type="text"
-                          required
                           name="parentName"
                           value={formData.parentName}
                           onChange={handleInputChange}
+                          onBlur={handleBlur}
                           placeholder="Full Name"
-                          className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all placeholder:text-stone-400"
+                          className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all placeholder:text-stone-400 ${getFieldClass(
+                            'parentName',
+                            formData.parentName
+                          )}`}
                         />
+                        {touched.parentName && errors.parentName && (
+                          <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                            <AlertCircle size={12} className="shrink-0" />
+                            <span>{errors.parentName}</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="space-y-1">
@@ -140,13 +227,25 @@ const AdmissionModal: React.FC = () => {
                         </label>
                         <input
                           type="tel"
-                          required
                           name="phone"
+                          maxLength={10}
+                          inputMode="numeric"
+                          pattern="[0-9]*"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="+91 98765 43210"
-                          className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all placeholder:text-stone-400"
+                          onBlur={handleBlur}
+                          placeholder="10-digit mobile number"
+                          className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all placeholder:text-stone-400 ${getFieldClass(
+                            'phone',
+                            formData.phone
+                          )}`}
                         />
+                        {touched.phone && errors.phone && (
+                          <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                            <AlertCircle size={12} className="shrink-0" />
+                            <span>{errors.phone}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
 
@@ -157,13 +256,22 @@ const AdmissionModal: React.FC = () => {
                       </label>
                       <input
                         type="email"
-                        required
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         placeholder="parent@example.com"
-                        className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all placeholder:text-stone-400"
+                        className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all placeholder:text-stone-400 ${getFieldClass(
+                          'email',
+                          formData.email
+                        )}`}
                       />
+                      {touched.email && errors.email && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.email}</span>
+                        </p>
+                      )}
                     </div>
 
                     {/* Row 3: Child's Name & Grade */}
@@ -174,13 +282,22 @@ const AdmissionModal: React.FC = () => {
                         </label>
                         <input
                           type="text"
-                          required
                           name="childName"
                           value={formData.childName}
                           onChange={handleInputChange}
+                          onBlur={handleBlur}
                           placeholder="Child's Full Name"
-                          className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all placeholder:text-stone-400"
+                          className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all placeholder:text-stone-400 ${getFieldClass(
+                            'childName',
+                            formData.childName
+                          )}`}
                         />
+                        {touched.childName && errors.childName && (
+                          <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                            <AlertCircle size={12} className="shrink-0" />
+                            <span>{errors.childName}</span>
+                          </p>
+                        )}
                       </div>
 
                       <div className="space-y-1">
@@ -188,11 +305,14 @@ const AdmissionModal: React.FC = () => {
                           Applying For Grade <span className="text-rose-500">*</span>
                         </label>
                         <select
-                          required
                           name="grade"
                           value={formData.grade}
                           onChange={handleInputChange}
-                          className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all cursor-pointer"
+                          onBlur={handleBlur}
+                          className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all cursor-pointer ${getFieldClass(
+                            'grade',
+                            formData.grade
+                          )}`}
                         >
                           <option value="">Select Grade</option>
                           <option>Playgroup (Age 2+)</option>
@@ -203,22 +323,47 @@ const AdmissionModal: React.FC = () => {
                             <option key={i + 1}>Grade {i + 1}</option>
                           ))}
                         </select>
+                        {touched.grade && errors.grade && (
+                          <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                            <AlertCircle size={12} className="shrink-0" />
+                            <span>{errors.grade}</span>
+                          </p>
+                        )}
                       </div>
                     </div>
 
                     {/* Row 4: Optional Remarks */}
                     <div className="space-y-1">
-                      <label className="block text-[11px] font-semibold text-stone-700">
-                        Questions or Remarks <span className="text-stone-400 font-normal">(Optional)</span>
-                      </label>
+                      <div className="flex justify-between items-center">
+                        <label className="block text-[11px] font-semibold text-stone-700">
+                          Questions or Remarks <span className="text-stone-400 font-normal">(Optional)</span>
+                        </label>
+                        <span className="text-[10px] text-stone-400">
+                          {formData.message.length}/500
+                        </span>
+                      </div>
                       <input
                         type="text"
                         name="message"
+                        maxLength={500}
                         value={formData.message}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         placeholder="Any queries regarding curriculum, transport, or campus visits..."
-                        className="w-full bg-white border border-stone-200 px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/15 transition-all placeholder:text-stone-400"
+                        className={`w-full bg-white border px-3.5 py-2.5 text-xs text-navy rounded-lg focus:outline-none transition-all placeholder:text-stone-400 ${
+                          touched.message && errors.message
+                            ? 'border-rose-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 bg-rose-50/20'
+                            : formData.message.trim().length > 0
+                            ? 'border-emerald-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 bg-emerald-50/15'
+                            : 'border-stone-200 focus:border-gold focus:ring-2 focus:ring-gold/15'
+                        }`}
                       />
+                      {touched.message && errors.message && (
+                        <p className="text-[11px] text-rose-600 font-medium flex items-center gap-1 mt-1">
+                          <AlertCircle size={12} className="shrink-0" />
+                          <span>{errors.message}</span>
+                        </p>
+                      )}
                     </div>
 
                     {/* Submit Button */}
@@ -248,25 +393,17 @@ const AdmissionModal: React.FC = () => {
                   <div className="w-12 h-12 bg-teal/10 text-teal rounded-full flex items-center justify-center mx-auto">
                     <Check size={24} />
                   </div>
-                  <div className="space-y-1.5">
-                    <h4 className="font-serif-display text-2xl font-bold text-navy">
-                      Thank You!
-                    </h4>
-                    <p className="text-stone-600 text-xs leading-relaxed">
-                      We have received your admission enquiry for <strong>{formData.childName || 'your child'}</strong>. Our admissions team will reach out within 24 hours.
-                    </p>
-                  </div>
-
-                  <div className="bg-white border border-stone-200 rounded-lg p-3.5 text-xs text-stone-600 space-y-1">
-                    <p className="text-[11px] font-medium text-stone-400 uppercase tracking-wider">Helpline</p>
-                    <p className="font-semibold text-navy">+91 98765 43210</p>
-                  </div>
-
+                  <h3 className="font-serif-display text-2xl font-bold text-navy">
+                    Enquiry Received
+                  </h3>
+                  <p className="text-stone-500 text-xs leading-relaxed">
+                    Thank you for your interest in The School of Excellence. Our admissions team will review your enquiry for <strong className="text-navy">{formData.childName}</strong> and contact you at <strong className="text-navy">{formData.phone}</strong> within 24 hours.
+                  </p>
                   <button
                     onClick={handleClose}
-                    className="bg-navy text-white text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-stone-800 transition-colors"
+                    className="inline-block bg-cream border border-stone-200 text-navy font-semibold text-xs px-6 py-2.5 rounded-lg hover:bg-stone-100 transition-colors mt-2"
                   >
-                    Continue Browsing
+                    Close Window
                   </button>
                 </div>
               )}
