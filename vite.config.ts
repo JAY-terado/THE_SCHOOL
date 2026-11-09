@@ -8,12 +8,13 @@ const filterNetworkUrls = (): Plugin => ({
   configureServer(server) {
     const origPrint = server.printUrls
     server.printUrls = () => {
-      if (server.resolvedUrls) {
-        const names = server.resolvedUrls.networkInterfaceNames || []
-        const wifiIndex = names.findIndex((name) => /wi-fi|wlan/i.test(name || ''))
-        if (wifiIndex !== -1 && server.resolvedUrls.network[wifiIndex]) {
-          server.resolvedUrls.network = [server.resolvedUrls.network[wifiIndex]]
-          server.resolvedUrls.networkInterfaceNames = [names[wifiIndex]]
+      const resolvedUrls = server.resolvedUrls as (typeof server.resolvedUrls & { networkInterfaceNames?: string[] }) | null
+      if (resolvedUrls) {
+        const names = resolvedUrls.networkInterfaceNames || []
+        const wifiIndex = names.findIndex((name: string) => /wi-fi|wlan/i.test(name || ''))
+        if (wifiIndex !== -1 && resolvedUrls.network[wifiIndex]) {
+          resolvedUrls.network = [resolvedUrls.network[wifiIndex]]
+          resolvedUrls.networkInterfaceNames = [names[wifiIndex]]
         }
       }
       origPrint.call(server)

@@ -36,7 +36,7 @@ const Academics: React.FC = () => {
     { id: 'primary', name: 'Primary (1–5)' },
     { id: 'middle', name: 'Middle (6–8)' },
     { id: 'secondary', name: 'Secondary (9–12)' },
-  ];
+  ] as const;
 
   const gradeTabs = {
     early: [
@@ -440,7 +440,7 @@ const Academics: React.FC = () => {
             {stages.map((stage) => (
               <button
                 key={stage.id}
-                onClick={() => handleStageChange(stage.id as any)}
+                onClick={() => handleStageChange(stage.id)}
                 className={`px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 shrink-0 ${
                   activeStage === stage.id
                     ? 'bg-navy text-white shadow-sm'

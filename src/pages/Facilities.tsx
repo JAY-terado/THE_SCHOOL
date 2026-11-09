@@ -27,7 +27,7 @@ const Facilities: React.FC = () => {
     { id: 'labs', name: 'Science & Tech Labs' },
     { id: 'studios', name: 'Creative Studios' },
     { id: 'sports', name: 'Sports & Fitness' },
-  ];
+  ] as const;
 
   const categoryData: CategoryData = {
     academic: {
@@ -192,7 +192,7 @@ const Facilities: React.FC = () => {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id)}
                 className={`px-5 py-3 text-xs font-bold uppercase tracking-wider rounded-[2px] transition-all duration-200 shrink-0 ${
                   activeTab === tab.id
                     ? 'bg-navy text-white shadow-sm'

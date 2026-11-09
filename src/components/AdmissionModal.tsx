@@ -29,6 +29,11 @@ const AdmissionModal: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleClose = () => {
+    setIsOpen(false);
+    sessionStorage.setItem('tse_admission_modal_dismissed', 'true');
+  };
+
   // Listen for open modal event from RightActionTabs or elsewhere
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
@@ -46,11 +51,6 @@ const AdmissionModal: React.FC = () => {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
-
-  const handleClose = () => {
-    setIsOpen(false);
-    sessionStorage.setItem('tse_admission_modal_dismissed', 'true');
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
